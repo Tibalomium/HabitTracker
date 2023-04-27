@@ -17,6 +17,7 @@
 		6CAFE05129F6CAF800953AFE /* HabitTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAFE05029F6CAF800953AFE /* HabitTrackerUITests.swift */; };
 		6CAFE05329F6CAF800953AFE /* HabitTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAFE05229F6CAF800953AFE /* HabitTrackerUITestsLaunchTests.swift */; };
 		6CBEF81529FAF85B0067B3DF /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81429FAF85B0067B3DF /* Habit.swift */; };
+		6CBEF81729FAFD500067B3DF /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81629FAFD500067B3DF /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		6CAFE05029F6CAF800953AFE /* HabitTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerUITests.swift; sourceTree = "<group>"; };
 		6CAFE05229F6CAF800953AFE /* HabitTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6CBEF81429FAF85B0067B3DF /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		6CBEF81629FAFD500067B3DF /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				6CAFE03B29F6CAF800953AFE /* HabitTracker.xcdatamodeld */,
 				6CAFE03629F6CAF800953AFE /* Preview Content */,
 				6CBEF81429FAF85B0067B3DF /* Habit.swift */,
+				6CBEF81629FAFD500067B3DF /* CircularProgressView.swift */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				6CBEF81529FAF85B0067B3DF /* Habit.swift in Sources */,
 				6CAFE03D29F6CAF800953AFE /* HabitTracker.xcdatamodeld in Sources */,
 				6CAFE03329F6CAF600953AFE /* ContentView.swift in Sources */,
+				6CBEF81729FAFD500067B3DF /* CircularProgressView.swift in Sources */,
 				6CAFE03129F6CAF600953AFE /* HabitTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

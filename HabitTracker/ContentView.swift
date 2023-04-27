@@ -15,12 +15,19 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @State var progress: Double = 0.7
 
     var body: some View {
         NavigationView {
             VStack {
-                Text("100%")
-                    .font(.system(size: 68))
+                ZStack {
+                    CircularProgressView(progress: progress)
+                        .frame(width: UIScreen.main.bounds.width/2)
+                        .aspectRatio(contentMode: .fit)
+                    Text("70%")
+                        .font(.system(size: 52))
+                }
                 List {
                     ForEach(items) { item in
                         NavigationLink {
