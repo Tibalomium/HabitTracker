@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Habit {
+struct Habitll {
     var name: String = ""
     var dates: [Date] = [] //Maybe tuples with date and bool
     var id: String = UUID().uuidString

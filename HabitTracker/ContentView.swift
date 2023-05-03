@@ -12,40 +12,50 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Habit.name, ascending: true)],//\Item.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    //private var items: FetchedResults<Item>
+    private var habits: FetchedResults<Habit>
     
-    @State var progress: Double = 0.7
+    @State var progress: Double = 0.3
 
     var body: some View {
         NavigationView {
             VStack {
-                ZStack {
-                    CircularProgressView(progress: progress)
-                        .frame(width: UIScreen.main.bounds.width/2)
-                        .aspectRatio(contentMode: .fit)
-                    Text("70%")
-                        .font(.system(size: 52))
-                }
+                CircularProgressView(progress: progress)
+                    .frame(width: UIScreen.main.bounds.width/2)
+                    .aspectRatio(contentMode: .fit)
+                    
                 List {
-                    ForEach(items) { item in
+                    ForEach(habits) { habit in
                         NavigationLink {
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                            Text("Habit \(habit.name!)")//"Item at \(item.timestamp!, formatter: itemFormatter)")
                         } label: {
-                            Text(item.timestamp!, formatter: itemFormatter)
+                            Text(habit.name!) //, formatter: itemFormatter)
+                                .swipeActions(edge: .leading) {
+                                    Button {
+
+                                    } label: {
+                                        Label("Done", systemImage: "plus.circle")
+                                    }
+                                }
+                                .tint(.green)
                         }
                     }
                     .onDelete(perform: deleteItems)
                 }
+                .scrollContentBackground(.hidden)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         EditButton()
                     }
                     ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
+                        NavigationLink("Add") {
+                            AddEditHabitView()
                         }
+                        /*Button(action: addItem) {
+                            Label("Add Item", systemImage: "plus")
+                        }*/
                     }
                 }
             }
@@ -71,7 +81,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { habits[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
