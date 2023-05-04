@@ -19,14 +19,14 @@ struct AddEditHabitView: View {
     @State private var repeatFreq: String = "0"
     @FocusState private var nameIsFocused: Bool
     
-    /*@FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)*/
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Habit.name, ascending: true)],//\Item.timestamp, ascending: true)],
         animation: .default)
     private var habits: FetchedResults<Habit>
-    //private var datesHabits: FetchedResults<DatesHabits>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \DatesHabits.date, ascending: true)],//\Item.timestamp, ascending: true)],
+        animation: .default)
+    private var datesHabits: FetchedResults<DatesHabits>
         
     
     
@@ -103,35 +103,20 @@ struct AddEditHabitView: View {
         }*/
     }
     
-    private func getHabit(name: String) -> Habit? {
-        let habitFetchRequest = Habit.fetchRequest()
-
-        let predicateName = NSPredicate(format: "name == %@", name)
-
-        habitFetchRequest.predicate = predicateName
-        do {
-            if let firstHabit = try viewContext.fetch(habitFetchRequest).first {
-                return firstHabit
-            }
-        }
-        catch {
-            print (error)
-        }
-        return nil
-    }
-    
     private func save() {
-
-        
         withAnimation {
             let newHabit = Habit(context: viewContext)
             newHabit.name = name
             if(repeating) {
                 newHabit.frequency = Int32(repeatFreq) ?? 0
+                saveDate(habit: newHabit, date: date)
+                
             } else {
                 newHabit.frequency = 0
+                
             }
             do {
+                viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
                 try viewContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
@@ -140,6 +125,28 @@ struct AddEditHabitView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
-            
+    }
+    
+    private func saveDate(habit: Habit, date: Date) {
+        let dataManager = DataManager(viewContext: viewContext)
+        let dateHabit = dataManager.getDatesHabits(date: date)
+        viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        if let dateHabit {
+            dateHabit.addToHabitsNotDone(habit)
+        }
+        else {
+            let newDatesHabits = DatesHabits(context: viewContext)
+            newDatesHabits.date = date
+            newDatesHabits.addToHabitsNotDone(habit)
+        }
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }

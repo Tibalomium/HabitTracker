@@ -16,11 +16,10 @@
 		6CAFE04729F6CAF800953AFE /* HabitTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAFE04629F6CAF800953AFE /* HabitTrackerTests.swift */; };
 		6CAFE05129F6CAF800953AFE /* HabitTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAFE05029F6CAF800953AFE /* HabitTrackerUITests.swift */; };
 		6CAFE05329F6CAF800953AFE /* HabitTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAFE05229F6CAF800953AFE /* HabitTrackerUITestsLaunchTests.swift */; };
-		6CBEF81529FAF85B0067B3DF /* Habitll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81429FAF85B0067B3DF /* Habitll.swift */; };
 		6CBEF81729FAFD500067B3DF /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81629FAFD500067B3DF /* CircularProgressView.swift */; };
-		6CBEF81929FBD8DD0067B3DF /* HabitDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81829FBD8DD0067B3DF /* HabitDate.swift */; };
-		6CBEF81B29FBD91C0067B3DF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81A29FBD91C0067B3DF /* Model.swift */; };
 		6CBEF81D29FBE76A0067B3DF /* AddEditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81C29FBE76A0067B3DF /* AddEditHabitView.swift */; };
+		6CBEF81F2A03D7720067B3DF /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF81E2A03D7720067B3DF /* DataManager.swift */; };
+		6CBEF8212A0438420067B3DF /* DetailsHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEF8202A0438420067B3DF /* DetailsHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +52,10 @@
 		6CAFE04C29F6CAF800953AFE /* HabitTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAFE05029F6CAF800953AFE /* HabitTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerUITests.swift; sourceTree = "<group>"; };
 		6CAFE05229F6CAF800953AFE /* HabitTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		6CBEF81429FAF85B0067B3DF /* Habitll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitll.swift; sourceTree = "<group>"; };
 		6CBEF81629FAFD500067B3DF /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		6CBEF81829FBD8DD0067B3DF /* HabitDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDate.swift; sourceTree = "<group>"; };
-		6CBEF81A29FBD91C0067B3DF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6CBEF81C29FBE76A0067B3DF /* AddEditHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditHabitView.swift; sourceTree = "<group>"; };
+		6CBEF81E2A03D7720067B3DF /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		6CBEF8202A0438420067B3DF /* DetailsHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,11 +112,10 @@
 				6CAFE03929F6CAF800953AFE /* Persistence.swift */,
 				6CAFE03B29F6CAF800953AFE /* HabitTracker.xcdatamodeld */,
 				6CAFE03629F6CAF800953AFE /* Preview Content */,
-				6CBEF81429FAF85B0067B3DF /* Habitll.swift */,
 				6CBEF81629FAFD500067B3DF /* CircularProgressView.swift */,
-				6CBEF81829FBD8DD0067B3DF /* HabitDate.swift */,
-				6CBEF81A29FBD91C0067B3DF /* Model.swift */,
 				6CBEF81C29FBE76A0067B3DF /* AddEditHabitView.swift */,
+				6CBEF81E2A03D7720067B3DF /* DataManager.swift */,
+				6CBEF8202A0438420067B3DF /* DetailsHabitView.swift */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -279,14 +276,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CAFE03A29F6CAF800953AFE /* Persistence.swift in Sources */,
+				6CBEF8212A0438420067B3DF /* DetailsHabitView.swift in Sources */,
+				6CBEF81F2A03D7720067B3DF /* DataManager.swift in Sources */,
 				6CBEF81D29FBE76A0067B3DF /* AddEditHabitView.swift in Sources */,
-				6CBEF81529FAF85B0067B3DF /* Habitll.swift in Sources */,
-				6CBEF81929FBD8DD0067B3DF /* HabitDate.swift in Sources */,
 				6CAFE03D29F6CAF800953AFE /* HabitTracker.xcdatamodeld in Sources */,
 				6CAFE03329F6CAF600953AFE /* ContentView.swift in Sources */,
 				6CBEF81729FAFD500067B3DF /* CircularProgressView.swift in Sources */,
 				6CAFE03129F6CAF600953AFE /* HabitTrackerApp.swift in Sources */,
-				6CBEF81B29FBD91C0067B3DF /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
