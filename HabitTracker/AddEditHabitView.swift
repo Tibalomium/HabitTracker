@@ -113,7 +113,10 @@ struct AddEditHabitView: View {
                 
             } else {
                 newHabit.frequency = 0
-                
+                let datesToSave = Array(dates).compactMap { Calendar.current.date(from: $0) } //Help from chatgpt
+                for dts in datesToSave {
+                    saveDate(habit: newHabit, date: dts)
+                }
             }
             do {
                 viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
