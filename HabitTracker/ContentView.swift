@@ -50,11 +50,11 @@ struct ContentView: View {
                 }
                 .onAppear {
                     update()
+                    dataManager.updateRepeatingHabits()
                 }
                 .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextObjectsDidChange)) {_ in
                     //Run stuff when coredata updates
                     update()
-                    dataManager.updateRepeatingHabits()
                 }
                 .scrollContentBackground(.hidden)
                 .toolbar {
