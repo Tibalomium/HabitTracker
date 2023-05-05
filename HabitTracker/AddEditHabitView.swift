@@ -19,17 +19,6 @@ struct AddEditHabitView: View {
     @State private var repeatFreq: String = "0"
     @FocusState private var nameIsFocused: Bool
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Habit.name, ascending: true)],//\Item.timestamp, ascending: true)],
-        animation: .default)
-    private var habits: FetchedResults<Habit>
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \DatesHabits.date, ascending: true)],//\Item.timestamp, ascending: true)],
-        animation: .default)
-    private var datesHabits: FetchedResults<DatesHabits>
-        
-    
-    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
@@ -73,6 +62,7 @@ struct AddEditHabitView: View {
         return false
     }
     
+    //TODO: Add this for editing exisiting habits
     private func update() {
         /*if let hab = getHabit(name: name) {
             name = hab.name
@@ -113,7 +103,7 @@ struct AddEditHabitView: View {
                 
             } else {
                 newHabit.frequency = 0
-                let datesToSave = Array(dates).compactMap { Calendar.current.date(from: $0) } //Help from chatgpt
+                let datesToSave = Array(dates).compactMap { Calendar.current.date(from: $0) }
                 for dts in datesToSave {
                     saveDate(habit: newHabit, date: dts)
                 }
@@ -122,10 +112,8 @@ struct AddEditHabitView: View {
                 viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                print(nsError)
             }
         }
     }
@@ -148,10 +136,8 @@ struct AddEditHabitView: View {
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            print(nsError)
         }
     }
 }

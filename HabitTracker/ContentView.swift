@@ -90,16 +90,8 @@ struct ContentView: View {
                 try viewContext.save()
             } catch {
                 let nsError = error as NSError
-                //fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                 print(nsError)
             }
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
