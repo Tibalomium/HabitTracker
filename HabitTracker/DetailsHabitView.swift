@@ -49,7 +49,7 @@ struct DetailsHabitView: View {
     private func calculateStreak() {
         
         //Add hours and minutes to check
-        
+        //TODO: Rewrite with min/max
         var datesDone = Array(habit.datesDone as? Set<DatesHabits> ?? []).compactMap {$0.date}
         datesDone.sort {
             $0 < $1
@@ -59,13 +59,6 @@ struct DetailsHabitView: View {
         datesNotDone.sort {
             $0 < $1
         }
-        /*let datesDone = Array(habit.datesDone as? Set<DatesHabits> ?? []).sorted {
-            $0.date! < $1.date!
-        }
-        let datesNotDone = Array(habit.datesNotDone as? Set<DatesHabits> ?? []).sorted {
-            $0.date! < $1.date!
-        }
-         */
         
         let filtered = datesNotDone.filter { $0 <= Date() }
         print(datesDone)

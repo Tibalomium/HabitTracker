@@ -17,11 +17,6 @@ struct ContentView: View {
         animation: .default)
     private var habits: FetchedResults<Habit>
     
-    /*@FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \DatesHabits.date, ascending: true)],
-        animation: .default)
-    private var datesHabits: FetchedResults<DatesHabits>*/
-    
     @State var progress: Double = 0.0
     @State var habitsForToday: [Habit] = []
     
@@ -57,7 +52,9 @@ struct ContentView: View {
                     update()
                 }
                 .onReceive(NotificationCenter.default.publisher(for: .NSManagedObjectContextObjectsDidChange)) {_ in
+                    //Run stuff when coredata updates
                     update()
+                    dataManager.updateRepeatingHabits()
                 }
                 .scrollContentBackground(.hidden)
                 .toolbar {
@@ -68,9 +65,6 @@ struct ContentView: View {
                         NavigationLink("Add") {
                             AddEditHabitView()
                         }
-                        /*Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
-                        }*/
                     }
                 }
             }
@@ -95,10 +89,9 @@ struct ContentView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                //fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                print(nsError)
             }
         }
     }

@@ -136,11 +136,13 @@ struct AddEditHabitView: View {
         viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         if let dateHabit {
             dateHabit.addToHabitsNotDone(habit)
+            habit.addToDatesNotDone(dateHabit)
         }
         else {
             let newDatesHabits = DatesHabits(context: viewContext)
             newDatesHabits.date = date
             newDatesHabits.addToHabitsNotDone(habit)
+            habit.addToDatesNotDone(newDatesHabits)
         }
         
         do {
